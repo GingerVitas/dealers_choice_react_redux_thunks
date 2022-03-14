@@ -1,0 +1,67 @@
+const {faker} = require('@faker-js/faker');
+const randomInteger = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+const idAssigner = () => {
+  let id = 0;
+  if (id === 0) return id;
+  else {
+    id++;
+    return id
+  }
+};
+
+const priceGen = function() {
+  return randomInteger((this.listPrice - 1500), (this.listPrice + 5000));
+}
+
+
+const employees = [...Array(5)].map(employee => (
+  {
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    email: faker.internet.email()
+  }
+));
+
+const soldCars = [...Array(25)].map(car => (
+  {
+    make: faker.vehicle.manufacturer(),
+    modelName: faker.vehicle.model(),
+    type: faker.vehicle.type(),
+    color: faker.vehicle.color(),
+    year: randomInteger(1967, 2023),
+    listPrice: randomInteger(2000, 100000),
+    sold: true
+    }
+));
+
+
+const availableCars = [...Array(25)].map(car => (
+  {
+    make: faker.vehicle.manufacturer(),
+    modelName: faker.vehicle.model(),
+    type: faker.vehicle.type(),
+    color: faker.vehicle.color(),
+    year: randomInteger(1967, 2023),
+    listPrice: randomInteger(2000, 100000)
+    }
+));
+
+const preSales = [...Array(25)].map(sale => (
+  {
+    employeeId: randomInteger(1, employees.length),
+    carId: idAssigner(),
+  }
+));
+
+const sales = preSales.map(sale => {
+  return {...sale, salePrice: priceGen.call(soldCars[sale.carId])}
+});
+
+module.exports = {
+  randomInteger,
+  priceGen,
+  employees,
+  soldCars,
+  availableCars,
+  sales
+}
