@@ -1,9 +1,9 @@
-const router = require('express').Router;
+const router = require('express').Router();
 const Car = require('../../db/Car');
 
 router.get('/', async(req, res, next) => {
   try{
-    res.send(Car.findAll({
+    res.send(await Car.findAll({
       where: {
         sold: true
       }

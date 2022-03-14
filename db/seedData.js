@@ -1,13 +1,10 @@
 const {faker} = require('@faker-js/faker');
 const randomInteger = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+let id = 0;
 const idAssigner = () => {
-  let id = 0;
-  if (id === 0) return id;
-  else {
     id++;
     return id
   }
-};
 
 const priceGen = function() {
   return randomInteger((this.listPrice - 1500), (this.listPrice + 5000));
@@ -42,7 +39,8 @@ const availableCars = [...Array(25)].map(car => (
     type: faker.vehicle.type(),
     color: faker.vehicle.color(),
     year: randomInteger(1967, 2023),
-    listPrice: randomInteger(2000, 100000)
+    listPrice: randomInteger(2000, 100000),
+    sold: false
     }
 ));
 
@@ -54,7 +52,7 @@ const preSales = [...Array(25)].map(sale => (
 ));
 
 const sales = preSales.map(sale => {
-  return {...sale, salePrice: priceGen.call(soldCars[sale.carId])}
+  return {...sale, salePrice: priceGen.call(soldCars[sale.carId-1])}
 });
 
 module.exports = {

@@ -5,7 +5,7 @@ const Sale = require('./Sale');
 
 Sale.belongsTo(Employee);
 Employee.hasMany(Sale);
-Car.belongsTo(Sale);
+Sale.belongsTo(Car)
 
 module.exports = {
   db,
