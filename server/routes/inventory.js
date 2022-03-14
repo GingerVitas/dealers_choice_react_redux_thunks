@@ -6,7 +6,8 @@ router.get('/', async(req, res, next) => {
     res.send(await Car.findAll({
       where: {
         sold: false
-      }
+      },
+      attributes: ['year', 'color', 'make', 'modelName', 'type', 'listPrice', 'imageUrl']
     }))
   }
   catch(ex){
