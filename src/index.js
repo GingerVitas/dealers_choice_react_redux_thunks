@@ -1,11 +1,55 @@
-import axios from 'axios';
 import React, { Component } from 'react';
 import {render} from 'react-dom';
+import {connect, Provider} from 'react-redux';
+import Nav from './components/Nav';
+import store from './store';
+import { loadCars, loadEmployees, setView} from './store';
+import Sales from './components/Sales';
+import Inventory from './components/Inventory';
+import Employees from './components/Employees';
 
-class Root extends Component {
+class _Root extends Component {
   componentDidMount() {
+    this.props.loadCars();
+    this.props.loadEmployees();
+    window.addEventListener('hashchange', () => {
+      this.props.setView(window.location.hash.slice(1))
+    });
+    this.props.setView(window.location.hash.slice(1));
+  }
 
+  render() {
+    const {view} = this.props;
+    return (
+    <div>
+      <h1>ACME Used Car Sales</h1>
+      <Nav />
+      <div className='renderContainer'>
+        {
+        view === 'inventory' ? <Inventory />
+        : view === 'employees' ? <Employees />
+        : view === 'sales' ? <Sales />
+        : <h2> Welcome to ACME Used Car Sales!!</h2>
+        }
+      </div>
+    </div>
+    )
   }
 }
 
-render(<Provider><Root /></Provider>, document.querySelector('#root'));
+const mapStateToProps = state => state;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setView: (view) => dispatch(setView(view)),
+    loadCars: () => {
+      dispatch(loadCars())
+    },
+    loadEmployees: () => {
+      dispatch(loadEmployees())
+    },
+  };
+};
+
+const Root = connect(mapStateToProps, mapDispatchToProps)(_Root)
+
+render(<Provider store={store}><Root /></Provider>, document.querySelector('#root'));

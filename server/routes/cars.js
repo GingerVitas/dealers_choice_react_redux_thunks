@@ -4,9 +4,6 @@ const Car = require('../../db/Car');
 router.get('/', async(req, res, next) => {
   try{
     res.send(await Car.findAll({
-      where: {
-        sold: false
-      },
       attributes: ['year', 'color', 'make', 'modelName', 'type', 'listPrice', 'imageUrl']
     }))
   }

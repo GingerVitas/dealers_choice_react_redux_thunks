@@ -7,7 +7,7 @@ const _Nav = ({view, cars, employees}) => {
   return (
     <nav>
       <ul className='nav'>
-        <li><a href='#' className={view === 'inventory' ? 'selected' : ''}>Available Inventory ({inventory.length})</a></li>
+        <li><a href='#inventory' className={view === 'inventory' ? 'selected' : ''}>Available Inventory ({inventory.length})</a></li>
         <li><a href='#employees' className={ view === 'employees' ? 'selected' : ''}>Employees ({employees.length})</a></li>
         <li><a href='#sales' className={ view === 'sales' ? 'selected' : ''}>Past Sales ({sales.length})</a></li>
       </ul>
