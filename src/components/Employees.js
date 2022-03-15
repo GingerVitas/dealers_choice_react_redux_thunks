@@ -6,6 +6,7 @@ const _Employees = ({employees}) => {
     style: 'currency',
     currency: 'USD'
   });
+
   return (
     <div className='employeeTable'>
       <table>
@@ -17,12 +18,13 @@ const _Employees = ({employees}) => {
             <th>Total Value</th>
           </tr>
           { employees.map(employee => {
+            const employeeSales = employee.sales.reduce((a, b) => a+(b.salePrice), 0)
             return (
-              <tr>
+              <tr key={employee.id}>
                 <td>{employee.firstName} {employee.lastName}</td>
                 <td>{employee.email}</td>
                 <td>{employee.sales.length}</td>
-                <td>{formatter.format(employee.sales.reduce((a, b) => a+b, 0))}</td>
+                <td>{formatter.format(employeeSales)}</td>
               </tr>
             )}) }
         </tbody>

@@ -10,12 +10,13 @@ import Employees from './components/Employees';
 
 class _Root extends Component {
   componentDidMount() {
-    this.props.loadCars();
-    this.props.loadEmployees();
+    const {loadCars, loadEmployees, setView} = this.props;
+    loadCars();
+    loadEmployees();
     window.addEventListener('hashchange', () => {
-      this.props.setView(window.location.hash.slice(1))
+      setView(window.location.hash.slice(1))
     });
-    this.props.setView(window.location.hash.slice(1));
+    setView(window.location.hash.slice(1));
   }
 
   render() {
