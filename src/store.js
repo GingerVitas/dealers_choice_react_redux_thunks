@@ -12,7 +12,7 @@ const CREATE_EMPLOYEE = 'CREATE_EMPLOYEE';
 const DELETE_EMPLOYEE = 'DELETE_EMPLOYEE';
 const SET_VIEW = 'SET_VIEW';
 
-//Actions
+//Action Creators
 const _setView = (view) => {
   return {
     type: SET_VIEW,
@@ -34,6 +34,7 @@ const _loadEmployees = (employees) => {
   };
 };
 
+//Actions
 const setView = view => {
   return (dispatch) => {
     dispatch(_setView(view))
@@ -43,7 +44,6 @@ const setView = view => {
 const loadCars = () => {
   return async(dispatch) => {
     const cars = (await axios.get('/api/cars')).data;
-    console.log(cars);
     dispatch(_loadCars(cars));
   };
 };

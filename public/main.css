@@ -1,0 +1,63 @@
+* {
+  background-color: #FAF9F6;
+}
+
+.renderContainer {
+  width: 75%;
+  margin: auto;
+  text-align: center;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
+  grid-template-rows: repeat(auto-fill, minmax(475px, 475px));
+  grid-auto-rows: minmax(475px, 475px);
+  grid-auto-columns: minmax(300px, 300px);
+  grid-gap: 1vw;
+}
+
+.card {
+  display: grid;
+  grid-template-areas: "img img img"
+                       "year make model"
+                       "color type mileage"
+                       "price price button";
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  padding: .5em;
+  border: solid 2px black;
+  text-align: center;
+}
+
+.carImage {
+  grid-area: img;
+  object-fit: cover;
+  width: 100%;
+  max-height: 100%;
+}
+
+.year {
+  grid-area: year;
+}
+
+.make {
+  grid-area: make;
+}
+
+.model {
+  grid-area: model;
+}
+.color {
+  grid-area: color;
+}
+.type {
+  grid-area: type;
+}
+.mileage {
+  grid-area: mileage;
+}
+.price {
+  grid-area: price;
+}

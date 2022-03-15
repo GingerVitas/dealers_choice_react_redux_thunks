@@ -26,6 +26,7 @@ const soldCars = [...Array(25)].map(car => (
     type: faker.vehicle.type(),
     color: faker.vehicle.color(),
     year: randomInteger(1967, 2023),
+    mileage: randomInteger(45, 200000),
     listPrice: randomInteger(2000, 100000),
     sold: true
     }
@@ -39,6 +40,7 @@ const availableCars = [...Array(25)].map(car => (
     type: faker.vehicle.type(),
     color: faker.vehicle.color(),
     year: randomInteger(1967, 2023),
+    mileage: randomInteger(45, 200000),
     listPrice: randomInteger(2000, 100000),
     sold: false
     }

@@ -1,11 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import Cards from './Cards';
 
 
 const _Sales = ({cars}) => {
+  const inventory = cars.filter(car=> car.sold)
   return (
     <div>
-      <h3>Sales go here</h3>
+      <h3>Available Inventory</h3>
+      <div className='grid'>
+        {inventory.map(car => <Cards key={car.id} car={car}/>)}
+      </div>
+      
     </div>
   )
 };

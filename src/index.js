@@ -7,6 +7,7 @@ import { loadCars, loadEmployees, setView} from './store';
 import Sales from './components/Sales';
 import Inventory from './components/Inventory';
 import Employees from './components/Employees';
+import '../public/main.css';
 
 class _Root extends Component {
   componentDidMount() {

@@ -37,6 +37,13 @@ const Car = db.define('car',  {
       notEmpty: true
     }
   },
+  mileage: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
   listPrice: {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -46,7 +53,7 @@ const Car = db.define('car',  {
   },
   imageUrl: {
     type: Sequelize.STRING,
-    defaultValue: 'images/default-vehicle-image.jpeg'
+    defaultValue: '../public/images/default-vehicle-image.jpeg'
   },
   sold: {
     type: Sequelize.BOOLEAN,
