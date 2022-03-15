@@ -1,5 +1,11 @@
-import React from 'react';
+import axios from 'axios';
+import React, { Component } from 'react';
 import {render} from 'react-dom';
 
+class Root extends Component {
+  componentDidMount() {
 
-render(<hr />, document.querySelector('#root'));
+  }
+}
+
+render(<Provider><Root /></Provider>, document.querySelector('#root'));
