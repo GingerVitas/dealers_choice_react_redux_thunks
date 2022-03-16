@@ -26,4 +26,26 @@ router.get('/', async(req, res, next) => {
   }
 });
 
+router.get('/:id', async(req, res, next) => {
+  try{
+    res.send(await Employee.findByPk(req.params.id), {
+      include: [
+        {
+          model: Sale,
+          attributes: ['salePrice'],
+          include: [
+            {
+            model:Car,
+            attributes: ['year','color', 'make', 'modelName', 'type', 'listPrice']
+            }
+          ]
+        }
+      ],
+    })
+  }
+  catch(ex){
+    next(ex)
+  }
+});
+
 module.exports = router;

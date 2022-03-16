@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Cards from './Cards';
+import CarCards from './CarCards';
 
 
 const _Sales = ({cars}) => {
@@ -9,7 +9,7 @@ const _Sales = ({cars}) => {
     <div>
       <h3>Available Inventory</h3>
       <div className='grid'>
-        {inventory.map(car => <Cards key={car.id} car={car}/>)}
+        {inventory.map(car => <CarCards key={car.id} car={car}/>)}
       </div>
       
     </div>

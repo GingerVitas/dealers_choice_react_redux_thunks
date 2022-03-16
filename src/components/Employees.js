@@ -14,8 +14,8 @@ const _Employees = ({employees}) => {
           <tr>
             <th>Employee Name</th>
             <th>Employee Email</th>
+            <th>Cars Sold</th>
             <th>Lifetime Sales</th>
-            <th>Total Value</th>
           </tr>
           { employees.map(employee => {
             const employeeSales = employee.sales.reduce((a, b) => a+(b.salePrice), 0)

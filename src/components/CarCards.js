@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cards = ({car}) => {
+const CarCards = ({car}) => {
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
@@ -20,4 +20,4 @@ const Cards = ({car}) => {
   )
 }
 
-export default Cards;
+export default CarCards;

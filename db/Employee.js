@@ -21,6 +21,9 @@ const Employee = db.define('employee', {
     validate: {
       isEmail: true
     }
+  },
+  imageUrl: {
+    type: Sequelize.STRING
   }
 });
 
