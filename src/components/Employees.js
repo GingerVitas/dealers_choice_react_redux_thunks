@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom';
 
 const _Employees = ({employees}) => {
   const formatter = new Intl.NumberFormat('en-US', {
@@ -8,8 +9,8 @@ const _Employees = ({employees}) => {
   });
 
   return (
-    <div className='employeeTable'>
-      <table>
+    <div>
+      <table className='employeeTable'>
         <tbody>
           <tr>
             <th>Employee Name</th>
@@ -21,7 +22,7 @@ const _Employees = ({employees}) => {
             const employeeSales = employee.sales.reduce((a, b) => a+(b.salePrice), 0)
             return (
               <tr key={employee.id}>
-                <td>{employee.firstName} {employee.lastName}</td>
+                <td><Link to={`/employees/${employee.id}`}>{employee.firstName} {employee.lastName}</Link></td>
                 <td>{employee.email}</td>
                 <td>{employee.sales.length}</td>
                 <td>{formatter.format(employeeSales)}</td>

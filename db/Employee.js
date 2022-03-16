@@ -24,6 +24,9 @@ const Employee = db.define('employee', {
   },
   imageUrl: {
     type: Sequelize.STRING
+  },
+  phone: {
+    type: Sequelize.STRING
   }
 });
 

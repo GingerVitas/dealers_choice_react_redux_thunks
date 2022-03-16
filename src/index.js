@@ -3,46 +3,42 @@ import {render} from 'react-dom';
 import {connect, Provider} from 'react-redux';
 import Nav from './components/Nav';
 import store from './store';
-import { loadCars, loadEmployees, setView} from './store';
+import { loadCars, loadEmployees } from './store';
 import Sales from './components/Sales';
 import Inventory from './components/Inventory';
 import Employees from './components/Employees';
 import '../public/main.css';
+import {HashRouter,Route, Link} from 'react-router-dom';
+import SingleEmployee from './components/SingleEmployee';
 
 class _Root extends Component {
   componentDidMount() {
     const {loadCars, loadEmployees, setView} = this.props;
     loadCars();
     loadEmployees();
-    window.addEventListener('hashchange', () => {
-      setView(window.location.hash.slice(1))
-    });
-    setView(window.location.hash.slice(1));
   }
-
   render() {
-    const {view} = this.props;
     return (
-    <div>
-      <h1>ACME Used Car Sales</h1>
-      <Nav />
-      <div className='renderContainer'>
-        {
-        view === 'inventory' ? <Inventory />
-        : view === 'employees' ? <Employees />
-        : view === 'sales' ? <Sales />
-        : <h2> Welcome to ACME Used Car Sales!!</h2>
-        }
-      </div>
-    </div>
+      <HashRouter>
+        <div>
+          <h1><Link to='/'>ACME Used Car Sales</Link></h1>
+          <Nav />
+          <div className='renderContainer'>
+            <h2> Welcome to ACME Used Car Sales!!</h2>
+            <Route path='/' />
+            <Route exact path='/inventory' component={Inventory} />
+            <Route exact path='/employees' component={Employees} />
+            <Route exact path='/sales' component={Sales} />
+            <Route exact path='/employees/:id' component={SingleEmployee} />
+          </div>
+        </div>
+      </HashRouter>
     )
   }
 }
 
-const mapStateToProps = state => state;
 const mapDispatchToProps = (dispatch) => {
   return {
-    setView: (view) => dispatch(setView(view)),
     loadCars: () => {
       dispatch(loadCars())
     },
@@ -52,6 +48,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const Root = connect(mapStateToProps, mapDispatchToProps)(_Root)
+const Root = connect(null, mapDispatchToProps)(_Root)
 
 render(<Provider store={store}><Root /></Provider>, document.querySelector('#root'));

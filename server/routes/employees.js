@@ -5,7 +5,7 @@ const Car = require('../../db/Car');
 
 router.get('/', async(req, res, next) => {
   try{
-    res.send(await Employee.findAll({
+    res.json(await Employee.findAll({
       include: [
         {
           model: Sale,
@@ -28,7 +28,7 @@ router.get('/', async(req, res, next) => {
 
 router.get('/:id', async(req, res, next) => {
   try{
-    res.send(await Employee.findByPk(req.params.id), {
+    const employee = (await Employee.findByPk(req.params.id, {
       include: [
         {
           model: Sale,
@@ -41,7 +41,8 @@ router.get('/:id', async(req, res, next) => {
           ]
         }
       ],
-    })
+    }));
+    res.json(employee)
   }
   catch(ex){
     next(ex)

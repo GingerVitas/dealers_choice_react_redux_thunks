@@ -10,17 +10,9 @@ const DELETE_CAR = 'DELETE_CAR';
 const LOAD_EMPLOYEES = 'LOAD_EMPLOYEES';
 const CREATE_EMPLOYEE = 'CREATE_EMPLOYEE';
 const DELETE_EMPLOYEE = 'DELETE_EMPLOYEE';
-const SET_VIEW = 'SET_VIEW';
 const SET_SINGLE_EMPLOYEE = 'SET_SINGLE_EMPLOYEE';
 
 //Action Creators
-const _setView = (view) => {
-  return {
-    type: SET_VIEW,
-    view
-  };
-};
-
 const _loadCars = (cars) => {
   return {
     type: LOAD_CARS,
@@ -43,12 +35,6 @@ const _setSingleEmployee = (employee) => {
 }
 
 //Actions
-const setView = view => {
-  return (dispatch) => {
-    dispatch(_setView(view))
-  };
-};
-
 const loadCars = () => {
   return async(dispatch) => {
     const cars = (await axios.get('/api/cars')).data;
@@ -104,17 +90,9 @@ const singleEmployeeReducer = (state = {}, action) => {
   return state;
 }
 
-const viewReducer = (state = '', action) => {
-  if(action.type === SET_VIEW) {
-    return action.view;
-  };
-  return state;
-};
-
 const reducer = combineReducers({
   cars: carReducer, 
   employees: employeeReducer,
-  view: viewReducer,
   singleEmployee: singleEmployeeReducer
 });
 
@@ -124,7 +102,6 @@ const store = createStore(reducer, applyMiddleware(thunk, logger));
 export default store
 
 export {
-  setView,
   loadCars,
   loadEmployees,
   setSingleEmployee

@@ -8,8 +8,10 @@ const _Inventory = ({cars}) => {
   return (
     <div>
       <h3>Available Inventory</h3>
-      <div className='grid'>
-        {inventory.map(car => <CarCards key={car.id} car={car}/>)}
+      <div className='gridContainer'>
+        <div className='grid'>
+          {inventory.map(car => <CarCards key={car.id} car={car}/>)}
+        </div>
       </div>
       
     </div>

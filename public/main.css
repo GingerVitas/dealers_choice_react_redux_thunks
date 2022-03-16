@@ -1,13 +1,35 @@
 * {
   background-color: #FAF9F6;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
+h1 {
+  text-align: center;
+  font-weight: bold;
+}
 .renderContainer {
-  width: 75%;
+  width: 85%;
   margin: auto;
   text-align: center;
 }
 
+.gridContainer {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  width: 85%;
+}
+
+table {
+  margin: auto;
+  text-align: center;
+}
 
 .grid {
   display: grid;
@@ -16,13 +38,14 @@
   grid-auto-rows: minmax(475px, 475px);
   grid-auto-columns: minmax(300px, 300px);
   grid-gap: 1vw;
+  text-align: center;
 }
 
 .card {
   display: grid;
   grid-template-areas: "img img img"
                        "year make model"
-                       "color type mileage"
+                       "carColor type mileage"
                        "price price button";
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
@@ -49,8 +72,8 @@
 .model {
   grid-area: model;
 }
-.color {
-  grid-area: color;
+.carColor {
+  grid-area: carColor;
 }
 .type {
   grid-area: type;

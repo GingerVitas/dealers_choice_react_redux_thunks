@@ -6,12 +6,12 @@ const CarCards = ({car}) => {
     currency: 'USD'
   })
   return (
-    <div className='card'>
+    <div className='card' id={car.id}>
         <img className='carImage' src={car.imageUrl} />
         <div className='year'>Year: {car.year}</div>
         <div className='make'>Make: {car.make}</div>
         <div className='model'>Model: {car.modelName}</div>
-        <div className='color'>Color: {car.color}</div>
+        <div className='carColor'>Color: {car.color}</div>
         <div className='type'>Type: {car.type}</div>
         <div className='mileage'>Mileage: {car.mileage}</div>
         {!car.sold ? <div className='price'>Price: {formatter.format(car.listPrice)}</div> : <div className='price'>Sold For: {formatter.format(car.sale.salePrice)}</div>}

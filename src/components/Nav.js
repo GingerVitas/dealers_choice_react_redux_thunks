@@ -1,15 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
-const _Nav = ({view, cars, employees}) => {
+const _Nav = ({cars, employees}) => {
   const inventory = cars.filter(car => !car.sold);
   const sales = cars.filter(car => car.sold)
   return (
     <nav>
       <ul className='nav'>
-        <li><a href='#inventory' className={view === 'inventory' ? 'selected' : ''}>Available Inventory ({inventory.length})</a></li>
-        <li><a href='#employees' className={ view === 'employees' ? 'selected' : ''}>Employees ({employees.length})</a></li>
-        <li><a href='#sales' className={ view === 'sales' ? 'selected' : ''}>Past Sales ({sales.length})</a></li>
+        <li><Link to='/inventory'>Available Inventory ({inventory.length})</Link></li>
+        <li><Link to='/employees'>Employees ({employees.length})</Link></li>
+        <li><Link to='/sales'>Past Sales ({sales.length})</Link></li>
       </ul>
     </nav>
   )

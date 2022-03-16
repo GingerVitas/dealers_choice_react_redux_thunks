@@ -16,7 +16,8 @@ const employees = [...Array(5)].map(employee => (
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     email: faker.internet.email(),
-    imageUrl: faker.image.avatar()
+    imageUrl: faker.image.avatar(),
+    phone: faker.phone.phoneNumber()
   }
 ));
 
