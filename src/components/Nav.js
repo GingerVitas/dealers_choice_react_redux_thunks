@@ -6,7 +6,7 @@ const _Nav = ({cars, employees}) => {
   const inventory = cars.filter(car => !car.sold);
   const sales = cars.filter(car => car.sold)
   return (
-    <nav>
+    <nav className='navContainer'>
       <ul className='nav'>
         <li><Link to='/inventory'>Available Inventory ({inventory.length})</Link></li>
         <li><Link to='/employees'>Employees ({employees.length})</Link></li>

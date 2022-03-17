@@ -1,11 +1,18 @@
 * {
   background-color: #FAF9F6;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  box-sizing: border-box;
 }
 
-h1 {
+.header {
   text-align: center;
   font-weight: bold;
+  font-size: 60px;
+  text-decoration: none;
+}
+h1 a:visited {
+  text-decoration: none;
+  color: black;
 }
 .renderContainer {
   width: 85%;
@@ -19,11 +26,18 @@ h1 {
   text-align: center;
 }
 
+.navContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
 .nav {
   display: flex;
   justify-content: space-evenly;
   list-style-type: none;
   width: 85%;
+  padding: 0;
 }
 
 table {
@@ -33,12 +47,13 @@ table {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
-  grid-template-rows: repeat(auto-fill, minmax(475px, 475px));
-  grid-auto-rows: minmax(475px, 475px);
-  grid-auto-columns: minmax(300px, 300px);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+  grid-template-rows: repeat(auto-fit, minmax(350px, 350px));
+  grid-auto-rows: minmax(350px, 350px);
+  grid-auto-columns: minmax(250px, 250px);
   grid-gap: 1vw;
   text-align: center;
+  justify-content: center;
 }
 
 .card {
@@ -46,12 +61,57 @@ table {
   grid-template-areas: "img img img"
                        "year make model"
                        "carColor type mileage"
-                       "price price button";
+                       "price button button";
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
   padding: .5em;
   border: solid 2px black;
   text-align: center;
+  align-items: center;
+}
+
+.employeeGrid {
+  display: grid;
+  grid-auto-rows: minmax(300px, 300px);
+  grid-auto-columns: minmax(500px, 500px);
+  text-align: center;
+  justify-content: center;
+}
+
+.employeeCard {
+  display: grid;
+  grid-template-areas: "employeeAvatar employeeAvatar employeeName employeeName"
+                       "employeeAvatar employeeAvatar companyName companyName"
+                       "employeeEmail employeeEmail employeePhone employeePhone" 
+                       "employeeNumbers employeeNumbers employeeNumbers employeeSales";
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  padding: .5em;
+  border: solid 2px black;
+  text-align: center;
+  align-items: center;
+}
+
+.employeeAvatar {
+  grid-area: employeeAvatar;
+}
+.employeeName {
+  grid-area: employeeName;
+}
+.companyName {
+  grid-area: companyName;
+}
+.employeeEmail {
+  grid-area: employeeEmail;
+}
+.employeePhone {
+  grid-area: employeePhone;
+}
+.employeeNumbers {
+  grid-area: employeeNumbers;
+}
+.employeeSales {
+  grid-area: employeeSales;
 }
 
 .carImage {
@@ -83,4 +143,8 @@ table {
 }
 .price {
   grid-area: price;
+}
+.button {
+  grid-area: button;
+  font-size: 16px;
 }

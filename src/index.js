@@ -21,7 +21,7 @@ class _Root extends Component {
     return (
       <HashRouter>
         <div>
-          <h1><Link to='/'>ACME Used Car Sales</Link></h1>
+          <h1 className='header'><Link to='/'>ACME Used Car Sales</Link></h1>
           <Nav />
           <div className='renderContainer'>
             <h2> Welcome to ACME Used Car Sales!!</h2>

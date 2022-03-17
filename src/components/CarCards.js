@@ -1,6 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-const CarCards = ({car}) => {
+const _CarCards = ({car}) => {
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
@@ -8,16 +9,24 @@ const CarCards = ({car}) => {
   return (
     <div className='card' id={car.id}>
         <img className='carImage' src={car.imageUrl} />
-        <div className='year'>Year: {car.year}</div>
-        <div className='make'>Make: {car.make}</div>
-        <div className='model'>Model: {car.modelName}</div>
-        <div className='carColor'>Color: {car.color}</div>
-        <div className='type'>Type: {car.type}</div>
-        <div className='mileage'>Mileage: {car.mileage}</div>
-        {!car.sold ? <div className='price'>Price: {formatter.format(car.listPrice)}</div> : <div className='price'>Sold For: {formatter.format(car.sale.salePrice)}</div>}
-        {!car.sold ? <div><button>Buy it Now!!</button></div> : <div>Sold by {car.sale.employee.firstName} {car.sale.employee.lastName}</div>}
+        <div className='year'>Year: <br />{car.year}</div>
+        <div className='make'>Make: <br />{car.make}</div>
+        <div className='model'>Model: <br />{car.modelName}</div>
+        <div className='carColor'>Color: <br />{car.color}</div>
+        <div className='type'>Type: <br />{car.type}</div>
+        <div className='mileage'>Mileage: <br />{car.mileage}</div>
+        {!car.sold ? <div className='price'>Price: <br />{formatter.format(car.listPrice)}</div> : <div className='price'>Sold For: <br />{formatter.format(car.sale.salePrice)}</div>}
+        {!car.sold ? <div className='button'><button onClick={()=> buyCar(car)}>Buy it Now!!</button></div> : <div className='button'>Sold by {car.sale.employee.firstName} {car.sale.employee.lastName}</div>}
     </div>
   )
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    buyCar: (car) => dispatch(buyCar(car))
+  }
+}
+
+const CarCards = connect(null, mapDispatchToProps)(_CarCards)
 
 export default CarCards;
