@@ -34,7 +34,7 @@ class SingleEmployee extends React.Component {
             <div className='employeeSales'>View my sales here!</div>
           </div>
         </div>
-        <button className='fireButton' onClick={() => fireEmployee(employee)}>Fire this employee for {faker.random.word()}!</button>
+        <button className='fireButton' onClick={() => fireEmployee(employee)}>Fire this employee!</button>
       </div>
     )
   };

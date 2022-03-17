@@ -1,13 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {buyCar} from '../store'
 
-const _CarCards = ({car}) => {
+const _CarCards = ({car, buyCar}) => {
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
   })
+  console.log(car);
+
+
   return (
-    <div className='card' id={car.id}>
+    <div className='card' key={car.id}>
         <img className='carImage' src={car.imageUrl} />
         <div className='year'>Year: <br />{car.year}</div>
         <div className='make'>Make: <br />{car.make}</div>
@@ -21,9 +25,10 @@ const _CarCards = ({car}) => {
   )
 }
 
-const mapDispatchToProps = dispatch => {
+
+const mapDispatchToProps = (dispatch, {history}) => {
   return {
-    buyCar: (car) => dispatch(buyCar(car))
+    buyCar: (car) => dispatch(buyCar(car, history))
   }
 }
 

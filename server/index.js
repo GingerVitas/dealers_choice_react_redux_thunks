@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const syncAndSeed = require('../db/syncAndSeed')
 
-app.use(express.urlencoded({extended: true}))
+app.use(express.json())
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 app.use('/public', express.static(path.join(__dirname, '../public')))
 

@@ -13,7 +13,7 @@ import SingleEmployee from './components/SingleEmployee';
 
 class _Root extends Component {
   componentDidMount() {
-    const {loadCars, loadEmployees, setView} = this.props;
+    const {loadCars, loadEmployees} = this.props;
     loadCars();
     loadEmployees();
   }

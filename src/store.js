@@ -71,20 +71,13 @@ const loadEmployees = () => {
   };
 };
 
-//Still working this out. Need to figure out how to define the req.body on a single onClick. something like this? :
-/*
-<button onclick="updateById(`carId`, `employeeId`)">update</button>
 
-function updateById(carId, employeeId) {
-   alert(id + name );
-   ...
-}
-and pass in the params. But need to randomize  the employeeId
-*/
-const buyCar = (car) => {
+const buyCar = (car, history) => {
   return async(dispatch) => {
-    await axios.put(`/api/cars/${car.id}`);
-    dispatch(_buyCar(car))
+    const newCar = (await axios.put(`/api/cars/${car.id}`, {sold: true})).data;
+    await axios.post('/api/sales', {newCar})
+    dispatch(_buyCar(newCar));
+    history.push('/sales');
   }
 }
 
@@ -124,7 +117,7 @@ const carReducer = (state = [], action) => {
     return state.filter(car => car.id !== action.car.id)
   };
   if(action.type === UPDATE_CAR) {
-     return state
+     return state.map(car => car.id !== action.car.id ? car : action.car)
   }
   return state;
 };``
