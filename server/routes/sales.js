@@ -41,6 +41,7 @@ router.post('/', async(req, res, next) => {
       employeeId: randomInteger(1, employees.length),
       salePrice: priceGen.call(car)
     });
+    console.log(sale)
     res.status(201).send(sale);
   }
   catch(ex){

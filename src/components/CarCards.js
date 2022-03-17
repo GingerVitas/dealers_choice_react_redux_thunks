@@ -7,8 +7,7 @@ const _CarCards = ({car, buyCar}) => {
     style: 'currency',
     currency: 'USD'
   })
-  console.log(car);
-
+  console.log(car)
 
   return (
     <div className='card' key={car.id}>

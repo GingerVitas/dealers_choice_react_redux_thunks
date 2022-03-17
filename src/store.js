@@ -74,10 +74,11 @@ const loadEmployees = () => {
 
 const buyCar = (car, history) => {
   return async(dispatch) => {
-    const newCar = (await axios.put(`/api/cars/${car.id}`, {sold: true})).data;
-    await axios.post('/api/sales', {newCar})
+    let newCar = (await axios.put(`/api/cars/${car.id}`, {sold: true})).data;
+    await axios.post('/api/sales', {newCar});
+    newCar = (await axios.get(`/api/cars/${car.id}`)).data
     dispatch(_buyCar(newCar));
-    history.push('/sales');
+    // history.push('/sales');
   }
 }
 
@@ -92,7 +93,7 @@ const fireEmployee = (employee, history) => {
   return async(dispatch) => {
     await axios.delete(`/api/employees/${employee.id}`);
     dispatch(destroyEmployee(employee));
-    history.push('/employees')
+    // history.push('/employees')
   }
 };
 
