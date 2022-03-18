@@ -73,12 +73,15 @@ const loadEmployees = () => {
 
 
 const buyCar = (car, history) => {
+  console.log(history)
   return async(dispatch) => {
     let newCar = (await axios.put(`/api/cars/${car.id}`, {sold: true})).data;
     await axios.post('/api/sales', {newCar});
-    newCar = (await axios.get(`/api/cars/${car.id}`)).data
+    newCar = (await axios.get(`/api/cars/${car.id}`)).data;
+    const employees = (await axios.get('/api/employees')).data
     dispatch(_buyCar(newCar));
-    // history.push('/sales');
+    dispatch(_loadEmployees(employees));
+    history.push('/employees');
   }
 }
 
@@ -93,7 +96,7 @@ const fireEmployee = (employee, history) => {
   return async(dispatch) => {
     await axios.delete(`/api/employees/${employee.id}`);
     dispatch(destroyEmployee(employee));
-    // history.push('/employees')
+    history.push('/employees')
   }
 };
 
@@ -118,7 +121,7 @@ const carReducer = (state = [], action) => {
     return state.filter(car => car.id !== action.car.id)
   };
   if(action.type === UPDATE_CAR) {
-     return state.map(car => car.id !== action.car.id ? car : action.car)
+     return [...state.map(car => car.id !== action.car.id ? car : action.car)]
   }
   return state;
 };``
@@ -131,7 +134,7 @@ const employeeReducer = (state = [], action) => {
     return [...state, action.employee];
   };
   if(action.type === DELETE_EMPLOYEE) {
-    return state.filter(employee => employee.id !== action.employee.id);
+    return [...state.filter(employee => employee.id !== action.employee.id)];
   };
   return state;
 };

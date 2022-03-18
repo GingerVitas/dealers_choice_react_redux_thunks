@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import CarCards from './CarCards';
+import SoldCards from './SoldCards';
+import {Route} from 'react-router-dom';
 
 
 const _Sales = ({cars}) => {
@@ -9,7 +10,7 @@ const _Sales = ({cars}) => {
     <div>
       <h3>Available Inventory</h3>
       <div className='grid'>
-        {inventory.map(car => <CarCards key={car.id} car={car}/>)}
+        <Route component={SoldCards} />
       </div>
       
     </div>

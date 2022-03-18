@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Car, Sale, Employee, db} = require('../../db/index');
+const { Car, Sale, Employee} = require('../../db/index');
+const db = require('../../db/db');
 const employees =  db.models.employee;
 
 const randomInteger = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
@@ -41,7 +42,7 @@ router.post('/', async(req, res, next) => {
       employeeId: randomInteger(1, employees.length),
       salePrice: priceGen.call(car)
     });
-    console.log(sale)
+    console.log(employees)
     res.status(201).send(sale);
   }
   catch(ex){
