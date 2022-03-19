@@ -57,7 +57,8 @@ const Car = db.define('car',  {
   },
   sold: {
     type: Sequelize.BOOLEAN,
-    allowNull: false
+    allowNull: false,
+    defaultValue: false
   }
 });
 
