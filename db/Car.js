@@ -16,7 +16,7 @@ const Car = db.define('car',  {
       notEmpty: true
     }
   },
-  type: {
+  carType: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {

@@ -14,7 +14,7 @@ router.get('/', async(req, res, next) => {
           include: [
             {
             model:Car,
-            attributes: ['year','color', 'make', 'modelName', 'type', 'listPrice']
+            attributes: ['year','color', 'make', 'modelName', 'carType', 'listPrice']
             }
           ]
         }
@@ -37,7 +37,7 @@ router.get('/:id', async(req, res, next) => {
           include: [
             {
             model:Car,
-            attributes: ['year','color', 'make', 'modelName', 'type', 'listPrice']
+            attributes: ['year','color', 'make', 'modelName', 'carType', 'listPrice']
             }
           ]
         }

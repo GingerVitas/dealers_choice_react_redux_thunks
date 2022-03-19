@@ -7,6 +7,7 @@ import Sales from './components/Sales';
 import Inventory from './components/Inventory';
 import Employees from './components/Employees';
 import SingleEmployee from './components/SingleEmployee';
+import IntakeForm from './components/IntakeForm';
 import '../public/main.css';
 import store from './store/index';
 import { loadCars } from './store/carStore';
@@ -32,6 +33,7 @@ class _Root extends Component {
             <Route exact path='/employees' component={Employees} />
             <Route exact path='/sales' component={Sales} />
             <Route exact path='/employees/:id' component={SingleEmployee} />
+            <Route exact path='/intake' component={IntakeForm} />
           </div>
         </div>
       </HashRouter>

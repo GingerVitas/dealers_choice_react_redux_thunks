@@ -4,7 +4,7 @@ const {Car, Sale, Employee} = require('../../db/index');
 router.get('/', async(req, res, next) => {
   try{
     res.send(await Car.findAll({
-      attributes: ['id', 'year', 'color', 'make', 'modelName', 'type', 'mileage', 'listPrice', 'imageUrl', 'sold'],
+      attributes: ['id', 'year', 'color', 'make', 'modelName', 'carType', 'mileage', 'listPrice', 'imageUrl', 'sold'],
       include: [
           {
             model: Sale,
@@ -22,7 +22,7 @@ router.get('/', async(req, res, next) => {
 router.get('/:id', async(req, res, next) => {
   try{
     res.send(await Car.findByPk(req.params.id, {
-      attributes: ['id', 'year', 'color', 'make', 'modelName', 'type', 'mileage', 'listPrice', 'imageUrl', 'sold'],
+      attributes: ['id', 'year', 'color', 'make', 'modelName', 'carType', 'mileage', 'listPrice', 'imageUrl', 'sold'],
       include: [
           {
             model: Sale,
@@ -37,11 +37,21 @@ router.get('/:id', async(req, res, next) => {
   }
 });
 
+router.post('/', async(req, res, next) => {
+  try{
+    const newCar = await Car.create(req.body)
+    console.log('Car added to inventory', newCar)
+    res.status(201).send(newCar)
+  }
+  catch(ex){
+    next(ex)
+  }
+})
+
 router.put('/:id', async(req, res, next) => {
   try{
-    console.log(req.params.id)
     const car = await Car.findByPk(req.params.id, {
-      attributes: ['id', 'year', 'color', 'make', 'modelName', 'type', 'mileage', 'listPrice', 'imageUrl', 'sold'],
+      attributes: ['id', 'year', 'color', 'make', 'modelName', 'carType', 'mileage', 'listPrice', 'imageUrl', 'sold'],
       include: [
           {
             model: Sale,

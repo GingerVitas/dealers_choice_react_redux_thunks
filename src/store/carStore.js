@@ -20,6 +20,13 @@ const _buyCar = (car) => {
   }
 }
 
+const _createCar = (car) => {
+  return {
+    type: CREATE_CAR,
+    car
+  }
+}
+
 //Thunks
 const loadCars = () => {
   return async(dispatch) => {
@@ -29,7 +36,6 @@ const loadCars = () => {
 };
 
 const buyCar = (car, history) => {
-  console.log(history)
   return async(dispatch) => {
     let newCar = (await axios.put(`/api/cars/${car.id}`, {sold: true})).data;
     await axios.post('/api/sales', {newCar});
@@ -38,6 +44,14 @@ const buyCar = (car, history) => {
     dispatch(_buyCar(newCar));
     dispatch(_loadEmployees(employees));
     history.push('/employees');
+  }
+}
+
+const createCar = (car, history) => {
+  return async(dispatch) => {
+    const newCar = (await axios.post('/api/cars', car)).data;
+    dispatch(_createCar(newCar))
+    history.push('/inventory')
   }
 }
 
@@ -61,5 +75,6 @@ export default carReducer;
 
 export {
   buyCar,
-  loadCars
+  loadCars,
+  createCar
 }

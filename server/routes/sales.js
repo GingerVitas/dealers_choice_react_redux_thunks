@@ -13,7 +13,7 @@ router.get('/', async(req, res, next) => {
       where: {
         sold: true
       },
-      attributes: ['year', 'color', 'make', 'modelName', 'type', 'listPrice', 'imageUrl'],
+      attributes: ['year', 'color', 'make', 'modelName', 'carType', 'listPrice', 'imageUrl'],
       include: [
         {
           model: Sale,
@@ -42,7 +42,6 @@ router.post('/', async(req, res, next) => {
       employeeId: randomInteger(1, employees.length),
       salePrice: priceGen.call(car)
     });
-    console.log(employees)
     res.status(201).send(sale);
   }
   catch(ex){

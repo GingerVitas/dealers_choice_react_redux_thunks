@@ -11,6 +11,7 @@ const _Nav = ({cars, employees}) => {
         <li><Link to='/inventory'>Available Inventory ({inventory.length})</Link></li>
         <li><Link to='/employees'>Employees ({employees.length})</Link></li>
         <li><Link to='/sales'>Past Sales ({sales.length})</Link></li>
+        <li><Link to='/intake'>Sell Your Car</Link></li>
       </ul>
     </nav>
   )
