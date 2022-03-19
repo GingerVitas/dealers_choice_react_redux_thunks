@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import {render} from 'react-dom';
 import {connect, Provider} from 'react-redux';
+import {HashRouter,Route, Link} from 'react-router-dom';
 import Nav from './components/Nav';
-import store from './store';
-import { loadCars, loadEmployees } from './store';
 import Sales from './components/Sales';
 import Inventory from './components/Inventory';
 import Employees from './components/Employees';
-import '../public/main.css';
-import {HashRouter,Route, Link} from 'react-router-dom';
 import SingleEmployee from './components/SingleEmployee';
+import '../public/main.css';
+import store from './store/index';
+import { loadCars } from './store/carStore';
+import { loadEmployees } from './store/employeeStore';
+
 
 class _Root extends Component {
   componentDidMount() {

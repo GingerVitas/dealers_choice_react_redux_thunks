@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {buyCar} from '../store'
+import {buyCar} from '../store/carStore'
 
 const _InventoryCards = ({cars, buyCar}) => {
   const formatter = new Intl.NumberFormat('en-US', {

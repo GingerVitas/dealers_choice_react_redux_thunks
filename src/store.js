@@ -104,9 +104,8 @@ const hireEmployee = () => {
   return async(dispatch) => {
     const newEmployee = (await axios.post('/api/employees')).data;
     dispatch(createEmployee(newEmployee));
-    // history.push(`/employees/${newEmployee.id}`)
+    history.push(`/employees/${newEmployee.id}`)
   }
-
 }
 
 //Reducers
@@ -124,7 +123,7 @@ const carReducer = (state = [], action) => {
      return [...state.map(car => car.id !== action.car.id ? car : action.car)]
   }
   return state;
-};``
+};
 
 const employeeReducer = (state = [], action) => {
   if(action.type === LOAD_EMPLOYEES) {

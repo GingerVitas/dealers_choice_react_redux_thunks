@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Car, Sale, Employee} = require('../../db/index');
 const db = require('../../db/db');
-const employees =  db.models.employee;
 
 const randomInteger = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const priceGen = function() {
@@ -37,6 +36,7 @@ router.get('/', async(req, res, next) => {
 router.post('/', async(req, res, next) => {
   try{
     const car = req.body.newCar;
+    const employees = await Employee.findAll();
     const sale = await Sale.create( {
       carId: car.id,
       employeeId: randomInteger(1, employees.length),

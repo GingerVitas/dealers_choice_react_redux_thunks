@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom';
-import { hireEmployee } from '../store';
+import { hireEmployee } from '../store/employeeStore';
 
 const _Employees = (props) => {
   const formatter = new Intl.NumberFormat('en-US', {
@@ -44,7 +44,7 @@ const mapStateToProps = state => state;
 
 const mapDispatchToProps = (dispatch, {history}) => {
   return {
-    hireEmployee: () => dispatch(hireEmployee())
+    hireEmployee: () => dispatch(hireEmployee(history))
   }
 }
 

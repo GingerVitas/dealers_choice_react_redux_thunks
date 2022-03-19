@@ -1,8 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {buyCar} from '../store'
 
-const _SoldCards = ({cars, buyCar}) => {
+const _SoldCards = ({cars}) => {
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
@@ -26,13 +25,6 @@ const _SoldCards = ({cars, buyCar}) => {
   )
 }
 
-
-const mapDispatchToProps = (dispatch, {history}) => {
-  return {
-    buyCar: (car) => dispatch(buyCar(car, history))
-  }
-}
-
-const SoldCards = connect(state => state, mapDispatchToProps)(_SoldCards)
+const SoldCards = connect(state => state)(_SoldCards)
 
 export default SoldCards;

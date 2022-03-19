@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { setSingleEmployee, fireEmployee } from '../store';
-import faker from '@faker-js/faker';
+import { setSingleEmployee, fireEmployee } from '../store/employeeStore';
 
 class SingleEmployee extends React.Component {
   componentDidMount() {
